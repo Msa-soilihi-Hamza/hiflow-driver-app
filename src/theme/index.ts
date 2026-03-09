@@ -7,7 +7,6 @@ export const colors = {
   border: '#E2E8F0',
   success: '#10B981',     // Green
   warning: '#F59E0B',     // Orange
-  danger: '#EF4444',      // Red (added for error testing)
 };
 
 export const spacing = {

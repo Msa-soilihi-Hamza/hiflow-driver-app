@@ -79,15 +79,6 @@ const MissionDetailScreen: React.FC<Props> = ({ route }) => {
         </View>
       </View>
 
-      <Pressable
-        style={[styles.ctaButton, { backgroundColor: colors.danger, marginBottom: spacing.md }]}
-        onPress={() => {
-          throw new Error("Sentry Test: Crash intentionnel !");
-        }}
-      >
-        <Text style={styles.ctaText}>Tester le crash Sentry</Text>
-      </Pressable>
-
       <Pressable style={styles.ctaButton} onPress={() => acceptMission(mission.id)}>
         <Text style={styles.ctaText}>Accepter la mission</Text>
       </Pressable>
