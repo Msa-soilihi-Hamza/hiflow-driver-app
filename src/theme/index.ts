@@ -1,12 +1,13 @@
 export const colors = {
-  primary: '#2563EB',
+  primary: '#2563EB',     // Blue
   background: '#F8FAFC',
-  text: '#0F172A',
+  text: '#1E293B',
   mutedText: '#64748B',
   card: '#FFFFFF',
   border: '#E2E8F0',
-  success: '#16A34A',
-  warning: '#F97316',
+  success: '#10B981',     // Green
+  warning: '#F59E0B',     // Orange
+  danger: '#EF4444',      // Red (added for error testing)
 };
 
 export const spacing = {
