@@ -30,8 +30,8 @@
       [
         "@sentry/react-native",
         {
-          "organization": "votre-org",
-          "project": "votre-projet"
+          "organization": "msa-soilihi",
+          "project": "react-native"
         }
       ]
     ]
