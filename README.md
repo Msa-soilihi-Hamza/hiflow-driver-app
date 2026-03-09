@@ -16,6 +16,7 @@ L'architecture est construite pour être claire, modulaire et hautement typée a
 - **Gestion d'état** : API Context native de React (`MissionsContext`)
 - **UI/UX** : React Native StyleSheet, Icons via `lucide-react-native`
 - **Tests** : Jest, React Native Testing Library
+- **Monitoring & Error Tracking** : Sentry
 
 ## 📁 Structure du projet
 
@@ -77,3 +78,4 @@ npm run test -- --watch
 - **Architecture Single Source of Truth** : Les types TypeScript (`Mission`) sont automatiquement déduits des schémas de validation Zod via `z.infer`. Une modification du modèle de données est instantanément propagée partout dans l'application.
 - **Design System** : Toutes les couleurs, rayons (radius) et polices sont appelées depuis un dictionnaire de tokens centralisé dans `src/theme/index.ts`. On évite le code "en dur".
 - **Composants isolés** : La mécanique de séparation des composants et des écrans permet de faire monter l'application en charge demain (intégration API, etc.) sans friction.
+- **Monitoring Proactif** : Intégration de Sentry pour capturer automatiquement les crashs et les erreurs en production, garantissant une grande maintenabilité et réactivité.
