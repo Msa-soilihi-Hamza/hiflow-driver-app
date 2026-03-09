@@ -1,0 +1,177 @@
+# HIFLOW MISSION APP — CURSOR RULES
+
+## IDENTITÉ DU PROJET
+Tu es un assistant expert React Native / TypeScript.
+Tu aides à construire une mini-app mobile inspirée du métier d'Hiflow :
+une plateforme de livraison de véhicules à l'unité.
+L'app simule le parcours d'un chauffeur qui reçoit et gère ses missions de livraison.
+
+---
+
+## STACK TECHNIQUE (obligatoire, ne pas dévier)
+- React Native + Expo SDK 54
+- TypeScript (strict mode)
+- React Navigation (native-stack)
+- Jest + jest-expo (tests)
+- Sentry (monitoring, déjà installé)
+- Lucide React Native (icônes)
+- Zod (validation des données)
+- Pas de Redux — useState + useContext uniquement
+- Pas d'Axios — fetch natif uniquement
+- Données mockées en local (pas de vrai backend)
+- Pas de NativeWind / Tailwind
+- StyleSheet.create() pour tous les styles
+
+---
+
+## INSTALLATION AVANT DE COMMENCER
+Les packages suivants doivent être installés avant de coder :
+npm install lucide-react-native
+npm install zod
+npm install react-native-svg (requis par lucide)
+npx expo install react-native-svg
+
+---
+
+## STRUCTURE DES FICHIERS (respecter strictement)
+src/
+├── components/
+│   ├── MissionCard.tsx
+│   ├── StatusBadge.tsx
+│   └── EmptyState.tsx
+├── screens/
+│   ├── MissionsListScreen.tsx
+│   ├── MissionDetailScreen.tsx
+│   └── MyMissionsScreen.tsx
+├── navigation/
+│   └── AppNavigator.tsx
+├── data/
+│   └── missions.ts
+├── types/
+│   └── index.ts
+├── schemas/
+│   └── mission.schema.ts   (schéma Zod pour valider les données)
+└── theme/
+    └── index.ts
+App.tsx
+
+---
+
+## RÈGLES DE COMPORTEMENT (très important)
+
+### Tu avances FICHIER PAR FICHIER
+- Tu ne codes jamais plusieurs fichiers en même temps
+- Tu attends ma validation avant de passer au fichier suivant
+- À chaque étape tu dis : "Fichier X terminé. On passe à Y ?"
+
+### Ordre de création obligatoire
+1. src/types/index.ts
+2. src/schemas/mission.schema.ts
+3. src/data/missions.ts
+4. src/theme/index.ts
+5. src/navigation/AppNavigator.tsx
+6. src/components/StatusBadge.tsx
+7. src/components/MissionCard.tsx
+8. src/components/EmptyState.tsx
+9. src/screens/MissionsListScreen.tsx
+10. src/screens/MissionDetailScreen.tsx
+11. src/screens/MyMissionsScreen.tsx
+12. App.tsx (mise à jour finale)
+
+### Avant chaque fichier tu dois
+- Rappeler le nom du fichier que tu vas créer
+- Expliquer en 2 lignes ce qu'il fait
+- Puis écrire le code
+
+---
+
+## RÈGLES DE CODE
+
+### TypeScript
+- Toujours typer les props avec une interface
+- Pas de "any"
+- Utiliser les types définis dans src/types/index.ts
+- Les types doivent être inférés depuis le schéma Zod avec z.infer<>
+
+### Zod
+- Définir le schéma MissionSchema dans src/schemas/mission.schema.ts
+- Utiliser z.infer<typeof MissionSchema> pour typer Mission dans types/index.ts
+- Valider les données mockées au chargement avec MissionSchema.parse()
+- Si la validation échoue, logger l'erreur avec console.error()
+
+### Lucide Icons
+- Importer depuis 'lucide-react-native'
+- Utiliser uniquement ces icônes :
+  - MapPin (ville départ/arrivée)
+  - Car (véhicule)
+  - Euro (rémunération)
+  - Clock (date)
+  - CheckCircle (livré)
+  - ChevronRight (navigation)
+  - Package (missions disponibles)
+- Toujours passer size et color en props
+- Couleurs depuis le theme uniquement
+
+### Composants
+- Functional components uniquement
+- Pas de inline styles — utiliser StyleSheet.create()
+- Utiliser les valeurs du theme (couleurs, spacing, fontSize)
+
+### Le schéma Zod Mission doit contenir
+- id: z.string()
+- vehicule: z.object({ marque, modele, immatriculation })
+- depart: z.object({ ville, adresse })
+- arrivee: z.object({ ville, adresse })
+- distance: z.number().positive()
+- statut: z.enum(['disponible', 'en_cours', 'livree'])
+- remuneration: z.number().positive()
+- date: z.string()
+
+### Données mockées
+- Minimum 6 missions fictives
+- Villes françaises réalistes (Paris, Lyon, Marseille, Bordeaux...)
+- Véhicules réalistes (Tesla Model 3, Peugeot 308, Renault Zoé...)
+- Statuts variés (pas toutes disponibles)
+- Toutes les données doivent passer la validation Zod
+
+### Navigation
+- Stack Navigator avec 3 écrans
+- Typage des routes avec RootStackParamList
+- Passer l'id de la mission en paramètre vers MissionDetailScreen
+
+### Theme
+- Couleurs : bleu principal #2563EB, fond #F8FAFC, texte #0F172A
+- Spacing : xs=4, sm=8, md=16, lg=24, xl=32
+- FontSize : sm=12, md=14, lg=16, xl=20, xxl=24
+
+---
+
+## FONCTIONNALITÉS À IMPLÉMENTER gu
+1. MissionsListScreen : afficher la liste des missions disponibles avec FlatList
+2. MissionDetailScreen : détail complet + bouton "Accepter la mission"
+3. MyMissionsScreen : liste des missions acceptées + bouton "Marquer comme livré"
+4. Gestion d'état globale avec useContext pour les missions acceptées
+
+---
+
+## CE QUE TU NE DOIS PAS FAIRE
+- Ne pas tout coder d'un coup
+- Ne pas utiliser de bibliothèques non listées
+- Ne pas créer de fichiers non prévus dans la structure
+- Ne pas skipper les types TypeScript
+- Ne pas utiliser de styles inline
+- Ne pas passer au fichier suivant sans ma validation
+- Ne pas utiliser NativeWind ou Tailwind
+- Ne pas utiliser React Native Reusables
+
+---
+
+## FORMAT DE RÉPONSE
+Pour chaque fichier :
+
+### 📄 [nom du fichier]
+**Rôle :** [explication courte]
+
+[code complet]
+
+**✅ Fichier terminé. On passe à [fichier suivant] ?**
