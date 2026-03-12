@@ -4,7 +4,7 @@ Bienvenue dans le dépôt de **Hiflow Driver App**, une application mobile déve
 
 ## 🚀 À propos du projet
 
-L'application permet aux chauffeurs de visualiser les missions de convoyage disponibles, d'en accepter de nouvelles, et de gérer leurs missions en cours jusqu'à la livraison. 
+L'application permet aux chauffeurs de visualiser les missions de convoyage disponible, d'en accepter de nouvelles, et de gérer leurs missions en cours jusqu'à la livraison. 
 
 L'architecture est construite pour être claire, modulaire et hautement typée avec TypeScript.
 
